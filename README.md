@@ -71,4 +71,4 @@ Configuration
 Link :https://ojs.aaai.org//index.php/AAAI/article/view/3881
 
 
-dataset link: https://drive.google.com/drive/folders/18BdgUuKAa2BcKn90kucFEMX4zNTxKods
+Dataset link: https://drive.google.com/drive/folders/18BdgUuKAa2BcKn90kucFEMX4zNTxKods
