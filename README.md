@@ -13,6 +13,8 @@ In the temporal dimension, there exist correlations between the traffic conditio
 
 
 
+![68747470733a2f2f692e6962622e636f2f4b775843714a782f74656d702d617474656e74696f6e2e706e67](https://user-images.githubusercontent.com/113280269/191446792-5e6c2245-55a9-4bb3-a57b-3381a01f5a06.png)
+
 It learns to attend (focus) on which part of the time segement used as input. In our case we have 12-time points So it will generate 12 by 12 weights.
 
 Spatial attention layer
@@ -48,6 +50,9 @@ However, it is expensive to directly perform the eigenvalue decomposition on the
 Model structure -
 The ASTGCN model structure
 The model is composed of two ASTGCN blocks followed by a final layer Original x (input) is (32, 307, 1, 12) - Block1 > (32, 307, 64, 12) - Block2 > (32, 307, 64, 12) - permute -> (32, 12, 307,64) # -final_conv -> (32, 12, 307, 1) -reshape-> (32,307,12) -> "The target" The model is the fusion of three independent components with the same structure, which are designed to respectively model the recent, daily-periodic and weekly-periodic dependencies of the historical data. But in our case, we will only focus on the recent segment (last hour segment) i.e. X_h
+![model](https://user-images.githubusercontent.com/113280269/191446563-eef74c73-7a42-42cd-88b1-4304696f2b9c.png)
+
+
 
 
 
@@ -61,33 +66,7 @@ Torch-scatter
 Torch-sparse
 tensorboaredx 2.5
 Configuration
-Data
-adj_filename: path of the adjacency matrix file
-graph_signal_matrix_filename: path of graph signal matrix file
-num_of_vertices: number of vertices
-points_per_hour: points per hour, in our dataset is 12
-num_for_predict: points to predict, in our model is 12
-Training
-model_name: ASTGCN
-ctx: set ctx = cpu, or set gpu-0, which means the first gpu device
-optimizer: adam,
-learning_rate: float, like 0.0001
-epochs: int, epochs to train=20
-batch_size: int
-num_of_weeks: int, how many weeks' data will be used
-num_of_days: int, how many days' data will be used
-num_of_hours: int, how many hours' data will be used
-K: int, K-order chebyshev polynomials will be used
-Reference :
-Research paper by:Shengnan Guo
-Beijing Jiaotong University
-Youfang Lin
-Beijing Jiaotong University
-Ning Feng
-Beijing Jiaotong University
-Chao Song
-Beijing Jiaotong University
-Huaiyu Wan
-Beijing Jiaotong University
+
+
 Link :https://ojs.aaai.org//index.php/AAAI/article/view/3881
 dataset link:https://drive.google.com/drive/folders/18BdgUuKAa2BcKn90kucFEMX4zNTxKods
